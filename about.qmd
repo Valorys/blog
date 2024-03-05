@@ -13,7 +13,8 @@ about:
     - icon: github
       text: Github
       href: https://github.com
-
 ---
 
-About this blog
+# A propos de ce blog !
+
+J'ai créer ce blog dans le cadre d'un cours sur R et github afin de prendre en main ces outils.

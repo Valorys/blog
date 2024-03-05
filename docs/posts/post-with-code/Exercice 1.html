@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Valorys Trillaud">
+<meta name="dcterms.date" content="2024-03-04">
+
+<title>blog - Exercice 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Exercice 1</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Valorys Trillaud </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="exercice-semaine-1" class="level1">
+<h1>Exercice semaine 1</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p>Lisez le fichier exo_1_ex.txt avec la fonction read.table. Le résultat sera affecté à l’objet de nom data_ex. Le jeux de données contient 4 colonnes. Quels sont les noms et la nature des colonnes ? Combien de lignes contient la data.frame ?</p>
+<section id="lecture-du-fichier" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-du-fichier">Lecture du fichier :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/valor/OneDrive/Bureau/Master 1/Semestre 2/R avancé et GitHub/cours_R_avance/data/data_base/paris-2024-sites-olympiques-et-paralympiques-franciliens.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="noms-et-nature-des-colonnes" class="level3">
+<h3 class="anchored" data-anchor-id="noms-et-nature-des-colonnes">Noms et nature des colonnes :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Noms des colonnes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "geo_point"                      "nom"                           
+[3] "sites_olympiques_paralympiques" "sports"                        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nature colonnes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(data_ex, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     geo_point                            nom 
+                   "character"                    "character" 
+sites_olympiques_paralympiques                         sports 
+                   "character"                    "character" </code></pre>
+</div>
+</div>
+<p>Les noms des colonnes geo_point, nom, sites_olympiques et sports. La nature des quatre colonnes est character.</p>
+</section>
+<section id="nombres-de-lignes" class="level3">
+<h3 class="anchored" data-anchor-id="nombres-de-lignes">Nombres de lignes :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nombres de lignes</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31</code></pre>
+</div>
+</div>
+<p>Il y a 31 lignes.</p>
+</section>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<section id="nombre-de-sites-olympiques" class="level3">
+<h3 class="anchored" data-anchor-id="nombre-de-sites-olympiques">Nombre de sites olympiques :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"Site olympique"</span>, data_ex<span class="sc">$</span>sites_olympiques_paralympiques))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+</div>
+<p>Il y a 26 sites olympiques.</p>
+</section>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<section id="nombre-de-sites-paralympiques" class="level3">
+<h3 class="anchored" data-anchor-id="nombre-de-sites-paralympiques">Nombre de sites paralympiques</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"Site paralympique"</span>, data_ex<span class="sc">$</span>sites_olympiques_paralympiques))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19</code></pre>
+</div>
+</div>
+<p>Il y a 19 sites paralympiques.</p>
+</section>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<section id="sites-qui-accueillent-plusieurs-disciplines-sportives" class="level3">
+<h3 class="anchored" data-anchor-id="sites-qui-accueillent-plusieurs-disciplines-sportives">Sites qui accueillent plusieurs disciplines sportives:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_ex<span class="sc">$</span>nom[<span class="fu">grep</span>(<span class="st">","</span>, data_ex<span class="sc">$</span>sports)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Stade de France"                                
+ [2] "Vélodrome National de Saint-Quentin-en-Yvelines"
+ [3] "Stade Roland Garros"                            
+ [4] "Arena Paris Sud 4 (Porte de Versailles)"        
+ [5] "Pont d'Iéna"                                    
+ [6] "Arena Bercy"                                    
+ [7] "Arena Paris nord"                               
+ [8] "Arena Paris Sud 6 (Porte de Versailles)"        
+ [9] "Stade de la Concorde"                           
+[10] "Arena Champs de Mars"                           
+[11] "La Défense Arena"                               
+[12] "Stade nautique"                                 
+[13] "Arena Paris Sud 1 (Porte de Versailles)"        
+[14] "Stade Tour Eiffel"                              
+[15] "Arena La Chapelle"                              
+[16] "Centre aquatique"                               
+[17] "Château de Versailles"                          
+[18] "Grand Palais"                                   
+[19] "Invalides"                                      </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<section id="disciplines-para-olympiques-accueillies-dans-les-sites-franciliens" class="level3">
+<h3 class="anchored" data-anchor-id="disciplines-para-olympiques-accueillies-dans-les-sites-franciliens">Disciplines para-olympiques accueillies dans les sites franciliens</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_ex<span class="sc">$</span>sports_para <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">strsplit</span>(data_ex<span class="sc">$</span>sports, <span class="st">","</span>), <span class="cf">function</span>(sports) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  para_sports <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"Para|fauteuil|Cécifoot|assis|Goalball|Boccia"</span>, sports, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(para_sports) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">paste</span>(para_sports, <span class="at">collapse =</span> <span class="st">","</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cn">NA</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">na.omit</span>(data_ex<span class="sc">$</span>sports_para))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Para athlétisme"                  "Para cyclisme sur piste"         
+ [3] "Tennis fauteuil"                  "Para cyclisme sur route"         
+ [5] "Para tennis de table"             "Basket fauteuil"                 
+ [7] "Volley-ball assis"                "Goalball"                        
+ [9] "Para judo,Rugby fauteuil"         "Para natation"                   
+[11] "Para canoë,Para aviron"           "Boccia"                          
+[13] "Cécifoot"                         "Para Badminton,Para powerlifting"
+[15] "Para équitation"                  "Escrime fauteuil,Para taekwondo" 
+[17] "Para tir à l'arc"                </code></pre>
+</div>
+</div>
+<p>Les disciplines para-olympiques accueillies sont Para athlétisme, Para cyclisme sur piste, Tennis fauteuil, Para cyclisme sur route, Para tennis de table, Basket fauteuil, Volley-ball assis, Goalball, Para judo,Rugby fauteuil, Para natation, Para canoë,Para aviron, Boccia, Cécifoot, Para Badminton, Para powerlifting, Para équitation, Escrime fauteuil Para taekwondo et Para tir à l’arc</p>
+</section>
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<section id="sites-avec-le-plus-de-disciplines-différentes" class="level3">
+<h3 class="anchored" data-anchor-id="sites-avec-le-plus-de-disciplines-différentes">Sites avec le plus de disciplines différentes :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Séparation des sports et calcul du nombre de sports</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>nb_sports <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(data_ex<span class="sc">$</span>sports),<span class="st">","</span>), length)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Mettre en ordre décroissant le nombre de sports</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ordre <span class="ot">&lt;-</span> <span class="fu">order</span>(<span class="sc">-</span>nb_sports)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Sortir le noms des sites et des sports selon l'ordre établis</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>data_ex[ordre,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             geo_point                                             nom
+10 48.838649, 2.378496                                     Arena Bercy
+11 48.971314, 2.519183                                Arena Paris nord
+13 48.865589, 2.321205                            Stade de la Concorde
+15 48.854536, 2.300413                            Arena Champs de Mars
+17 48.862229, 2.636374                                  Stade nautique
+21 48.899483, 2.361803                               Arena La Chapelle
+29 48.866041, 2.312406                                    Grand Palais
+30 48.862286, 2.313222                                       Invalides
+2  48.924388, 2.359871                                 Stade de France
+5   48.84732, 2.245501                             Stade Roland Garros
+12 48.829624, 2.290777         Arena Paris Sud 6 (Porte de Versailles)
+16   48.89566, 2.22971                                La Défense Arena
+23 48.923457, 2.355527                                Centre aquatique
+25  48.815115, 2.08208                           Château de Versailles
+4  48.788046, 2.034987 Vélodrome National de Saint-Quentin-en-Yvelines
+7  48.830231, 2.289126         Arena Paris Sud 4 (Porte de Versailles)
+9    48.856262, 2.2914                                     Pont d'Iéna
+18 48.832068, 2.284126         Arena Paris Sud 1 (Porte de Versailles)
+19 48.857232, 2.296084                               Stade Tour Eiffel
+1  48.841319, 2.253076                                Parc des Princes
+3    48.751095, 2.0759                                   Golf national
+6  48.911184, 2.546395                                Clichy-sous-Bois
+8  48.856858, 2.351415                         Hôtel de ville de Paris
+14 48.930873, 2.249836                            Stade Yves du Manoir
+20 48.787261, 2.034736          Stade BMX de Saint-Quentin-en-Yvelines
+22 48.835157, 2.257363                       Stade Pierre de Coubertin
+27 48.944643, 2.408258             Terrain des Essences - La Courneuve
+28 48.788162, 1.967776                             Colline d'Elancourt
+31 48.937188, 2.420467                      Site d'escalade du Bourget
+24  48.92467, 2.332428                               Village olympique
+26 48.944207, 2.424716                              Village des médias
+     sites_olympiques_paralympiques
+10 Site olympique,Site paralympique
+11 Site olympique,Site paralympique
+13                   Site olympique
+15 Site olympique,Site paralympique
+17 Site olympique,Site paralympique
+21 Site olympique,Site paralympique
+29 Site olympique,Site paralympique
+30 Site olympique,Site paralympique
+2  Site olympique,Site paralympique
+5  Site olympique,Site paralympique
+12 Site olympique,Site paralympique
+16 Site olympique,Site paralympique
+23                   Site olympique
+25 Site olympique,Site paralympique
+4  Site olympique,Site paralympique
+7  Site olympique,Site paralympique
+9                    Site olympique
+18 Site olympique,Site paralympique
+19 Site olympique,Site paralympique
+1                    Site olympique
+3                    Site olympique
+6                 Site paralympique
+8                    Site olympique
+14                   Site olympique
+20                   Site olympique
+22                Site paralympique
+27                Site paralympique
+28                   Site olympique
+31                   Site olympique
+24                                 
+26                                 
+                                                             sports
+10     Basketball,Basket fauteuil,Gymnastique artistique,trampoline
+11                Boxe,Escrime,Pentathlon moderne,Volley-ball assis
+13                 Basketball 3x3,BMX freestyle,Breaking,Skateboard
+15                              Judo,Para judo,Lutte,Rugby fauteuil
+17                              Canoë,Para canoë,Aviron,Para aviron
+21 Badminton,Para Badminton,Gymnastique rythmique,Para powerlifting
+29                Escrime,Escrime fauteuil,Taekwondo,Para taekwondo
+30       Tir à l'arc,Para tir à l'arc,Athlétisme,Cyclisme sur route
+2                                  Athlétisme,Para athlétisme,Rugby
+5                                       Tennis,Tennis fauteuil,Boxe
+12                                  Haltérophilie,Handball,Goalball
+16                                Natation,Para natation,Water-polo
+23                          Natation artistique,Plongeon,Water-polo
+25              Sports équestres,Para équitation,Pentathlon moderne
+4                        Cyclisme sur piste,Para cyclisme sur piste
+7                              Tennis de table,Para tennis de table
+9                                     Cyclisme sur route,Athlétisme
+18                                                Volleyball,Boccia
+19                                     Volleyball de plage,Cécifoot
+1                                                          Football
+3                                                              Golf
+6                                           Para cyclisme sur route
+8                                                        Athlétisme
+14                                                           Hockey
+20                                                         BMX race
+22                                                         Goalball
+27                                                  Para athlétisme
+28                                                              VTT
+31                                                Escalade sportive
+24                                                                 
+26                                                                 
+                        sports_para
+10                  Basket fauteuil
+11                Volley-ball assis
+13                             &lt;NA&gt;
+15         Para judo,Rugby fauteuil
+17           Para canoë,Para aviron
+21 Para Badminton,Para powerlifting
+29  Escrime fauteuil,Para taekwondo
+30                 Para tir à l'arc
+2                   Para athlétisme
+5                   Tennis fauteuil
+12                         Goalball
+16                    Para natation
+23                             &lt;NA&gt;
+25                  Para équitation
+4           Para cyclisme sur piste
+7              Para tennis de table
+9                              &lt;NA&gt;
+18                           Boccia
+19                         Cécifoot
+1                              &lt;NA&gt;
+3                              &lt;NA&gt;
+6           Para cyclisme sur route
+8                              &lt;NA&gt;
+14                             &lt;NA&gt;
+20                             &lt;NA&gt;
+22                         Goalball
+27                  Para athlétisme
+28                             &lt;NA&gt;
+31                             &lt;NA&gt;
+24                             &lt;NA&gt;
+26                             &lt;NA&gt;</code></pre>
+</div>
+</div>
+<p>Les sites qui acceuillent le plus de disciplines différentes sont l’Arena Bercy, l’Arena Paris nord, le Stade de la Concorde, l’Arena Champs de Mars, le Stade nautique, l’Arena La Chapelle, le Grand Palais et les Invalides.</p>
+</section>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<section id="discipline-qui-aura-lieu-sur-le-plus-grand-nombre-de-sites" class="level3">
+<h3 class="anchored" data-anchor-id="discipline-qui-aura-lieu-sur-le-plus-grand-nombre-de-sites">Discipline qui aura lieu sur le plus grand nombre de sites :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(data_ex<span class="sc">$</span>sports, <span class="st">","</span>))), <span class="at">decreasing =</span> <span class="cn">TRUE</span>))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Athlétisme"</code></pre>
+</div>
+</div>
+<p>Le sport qui a lieu sur le plus de sites est l’athlétisme.</p>
+</section>
+<section id="sites-qui-accueillent-cette-discipline" class="level3">
+<h3 class="anchored" data-anchor-id="sites-qui-accueillent-cette-discipline">Sites qui accueillent cette discipline :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(data_ex, <span class="fu">grepl</span>(<span class="st">"Athlétisme"</span>, sports))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             geo_point                     nom   sites_olympiques_paralympiques
+2  48.924388, 2.359871         Stade de France Site olympique,Site paralympique
+8  48.856858, 2.351415 Hôtel de ville de Paris                   Site olympique
+9    48.856262, 2.2914             Pont d'Iéna                   Site olympique
+30 48.862286, 2.313222               Invalides Site olympique,Site paralympique
+                                                       sports      sports_para
+2                            Athlétisme,Para athlétisme,Rugby  Para athlétisme
+8                                                  Athlétisme             &lt;NA&gt;
+9                               Cyclisme sur route,Athlétisme             &lt;NA&gt;
+30 Tir à l'arc,Para tir à l'arc,Athlétisme,Cyclisme sur route Para tir à l'arc</code></pre>
+</div>
+</div>
+<p>L’athlétisme aura lieu au stade de France, à l’hôtel de ville de Paris, le Pont d’Iéna et les invalides.</p>
+</section>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<section id="les-deux-sites-les-plus-proches-à-vol-doiseau" class="level3">
+<h3 class="anchored" data-anchor-id="les-deux-sites-les-plus-proches-à-vol-doiseau">Les deux sites les plus proches à vol d’oiseau :</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Créer une colonne pour la latitude et la longitude</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data_ex<span class="sc">$</span>geo_point <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">as.character</span>(data_ex<span class="sc">$</span>geo_point), <span class="st">","</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data_ex<span class="sc">$</span>latitude <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sapply</span>(data_ex<span class="sc">$</span>geo_point, <span class="cf">function</span>(x) x[<span class="dv">1</span>]))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>data_ex<span class="sc">$</span>longitude <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sapply</span>(data_ex<span class="sc">$</span>geo_point, <span class="cf">function</span>(x) x[<span class="dv">2</span>]))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Créer une matrice pour pouvoir stocker les distance</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>distances_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="fu">nrow</span>(data_ex), <span class="at">ncol =</span> <span class="fu">nrow</span>(data_ex), <span class="at">dimnames =</span> <span class="fu">list</span>(data_ex<span class="sc">$</span>nom, data_ex<span class="sc">$</span>nom))</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Calcul des distance entre les sites</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">nrow</span>(data_ex)<span class="sc">-</span><span class="dv">1</span>)) {</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(data_ex)) {</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    distance <span class="ot">&lt;-</span> <span class="fu">distHaversine</span>(</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">p1 =</span> <span class="fu">c</span>(data_ex<span class="sc">$</span>latitude[i], data_ex<span class="sc">$</span>longitude[i]),</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">p2 =</span> <span class="fu">c</span>(data_ex<span class="sc">$</span>latitude[j], data_ex<span class="sc">$</span>longitude[j])</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    distances_matrix[i, j] <span class="ot">&lt;-</span> distance</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    distances_matrix[j, i] <span class="ot">&lt;-</span> distance</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Trouver les deux sites les plus proches</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>min_distance <span class="ot">&lt;-</span> <span class="fu">min</span>(distances_matrix[distances_matrix <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>sites_proches <span class="ot">&lt;-</span> <span class="fu">which</span>(distances_matrix <span class="sc">==</span> min_distance, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Afficher les résultats</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(distances_matrix)[sites_proches[<span class="dv">1</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Stade BMX de Saint-Quentin-en-Yvelines"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(distances_matrix)[sites_proches[<span class="dv">1</span>, <span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Vélodrome National de Saint-Quentin-en-Yvelines"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>min_distance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.69166</code></pre>
+</div>
+</div>
+<p>Les deux sites les plus proches sont le Stade BMX de Saint-Quentin-en-Yvelines et le Vélodrome National de Saint-Quentin-en-Yvelines.</p>
+</section>
+</section>
+<section id="question-10" class="level2">
+<h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
+<section id="les-deux-sites-les-plus-éloignés" class="level3">
+<h3 class="anchored" data-anchor-id="les-deux-sites-les-plus-éloignés">Les deux sites les plus éloignés</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trouver les deux sites les plus éloignés</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>max_distance <span class="ot">&lt;-</span> <span class="fu">max</span>(distances_matrix[distances_matrix <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sites_eloignes <span class="ot">&lt;-</span> <span class="fu">which</span>(distances_matrix <span class="sc">==</span> max_distance, <span class="at">arr.ind =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Afficher les résultats</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(distances_matrix)[sites_eloignes [<span class="dv">1</span>,<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Colline d'Elancourt"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(distances_matrix)[sites_eloignes [<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Stade nautique"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>max_distance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 74882.55</code></pre>
+</div>
+</div>
+<p>Les deux sites les plus éloignés sont la colline d’Elancourt et le stade nautique.</p>
+</section>
+</section>
+<section id="question-11" class="level2">
+<h2 class="anchored" data-anchor-id="question-11">Question 11</h2>
+<section id="appartement-situé-au-barycentre-de-lensemble-des-sites-olympiques." class="level3">
+<h3 class="anchored" data-anchor-id="appartement-situé-au-barycentre-de-lensemble-des-sites-olympiques.">Appartement situé au barycentre de l’ensemble des sites olympiques.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>barycentre_latitude <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(data_ex<span class="sc">$</span>latitude, <span class="at">w =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(data_ex)))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>barycentre_longitude <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(data_ex<span class="sc">$</span>longitude, <span class="at">w =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(data_ex)))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>coordonnees_tibble <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lon =</span> barycentre_longitude,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">lat =</span> barycentre_latitude</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Utiliser reverse_geocode pour obtenir le nom de l'adresse</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>resultat <span class="ot">&lt;-</span> tidygeocoder<span class="sc">::</span><span class="fu">reverse_geocode</span>(coordonnees_tibble, <span class="at">lon =</span> <span class="st">"lon"</span>, <span class="at">lat =</span> <span class="st">"lat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Passing 1 coordinate to the Nominatim single coordinate geocoder</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Query completed in: 1 seconds</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Afficher le résultat</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>resultat<span class="sc">$</span>address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "23, Avenue Pierre 1er de Serbie, Quartier de Chaillot, Paris 16e Arrondissement, Paris, Île-de-France, France métropolitaine, 75116, France"</code></pre>
+</div>
+</div>
+<p>L’appartement au barycentre de l’ensemble des sites olympiques se situe au 23, Avenue Pierre 1er de Serbie, Quartier de Chaillot, Paris 16e Arrondissement, Paris, Île-de-France, France métropolitaine, 75116, France.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

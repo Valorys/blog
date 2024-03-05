@@ -1,0 +1,203 @@
+---
+title: "Exercice 1"
+author: "Valorys Trillaud"
+date: "2024-03-04"
+categories: [news, analysis]
+---
+
+# Exercice semaine 1
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(geosphere)
+library(tidygeocoder)
+library(stringr)
+```
+
+## Question 2
+
+Lisez le fichier exo_1_ex.txt avec la fonction read.table. Le résultat sera affecté à l'objet de nom data_ex. Le jeux de données contient 4 colonnes. Quels sont les noms et la nature des colonnes ? Combien de lignes contient la data.frame ?
+
+### Lecture du fichier :
+
+```{r}
+data_ex <- read.csv("C:/Users/valor/OneDrive/Bureau/Master 1/Semestre 2/R avancé et GitHub/cours_R_avance/data/data_base/paris-2024-sites-olympiques-et-paralympiques-franciliens.csv", sep = ";", header = TRUE)
+```
+
+### Noms et nature des colonnes :
+
+```{r}
+#Noms des colonnes
+names(data_ex)
+
+#Nature colonnes
+sapply(data_ex, class)
+```
+
+Les noms des colonnes geo_point, nom, sites_olympiques et sports. La nature des quatre colonnes est character.
+
+### Nombres de lignes :
+
+```{r}
+#Nombres de lignes
+nrow(data_ex)
+```
+
+Il y a 31 lignes.
+
+## Question 3
+
+### Nombre de sites olympiques :
+
+```{r}
+sum(grepl("Site olympique", data_ex$sites_olympiques_paralympiques))
+```
+
+Il y a 26 sites olympiques.
+
+## Question 4
+
+### Nombre de sites paralympiques
+
+```{r}
+sum(grepl("Site paralympique", data_ex$sites_olympiques_paralympiques))
+```
+
+Il y a 19 sites paralympiques.
+
+## Question 5
+
+### Sites qui accueillent plusieurs disciplines sportives:
+
+```{r}
+data_ex$nom[grep(",", data_ex$sports)]
+```
+
+## Question 6
+
+### Disciplines para-olympiques accueillies dans les sites franciliens
+
+```{r}
+data_ex$sports_para <- sapply(strsplit(data_ex$sports, ","), function(sports) {
+  para_sports <- grep("Para|fauteuil|Cécifoot|assis|Goalball|Boccia", sports, value = TRUE)
+  if (length(para_sports) > 0) paste(para_sports, collapse = ",")
+  else NA
+})
+
+unique(na.omit(data_ex$sports_para))
+```
+
+Les disciplines para-olympiques accueillies sont Para athlétisme, Para cyclisme sur piste, Tennis fauteuil, Para cyclisme sur route, Para tennis de table, Basket fauteuil, Volley-ball assis, Goalball, Para judo,Rugby fauteuil, Para natation, Para canoë,Para aviron, Boccia, Cécifoot, Para Badminton, Para powerlifting, Para équitation, Escrime fauteuil Para taekwondo et Para tir à l'arc
+
+## Question 7
+
+### Sites avec le plus de disciplines différentes :
+
+```{r}
+#Séparation des sports et calcul du nombre de sports
+nb_sports <- sapply(strsplit(as.character(data_ex$sports),","), length)
+
+#Mettre en ordre décroissant le nombre de sports
+ordre <- order(-nb_sports)
+
+#Sortir le noms des sites et des sports selon l'ordre établis
+data_ex[ordre,]
+```
+
+Les sites qui acceuillent le plus de disciplines différentes sont l'Arena Bercy, l'Arena Paris nord, le Stade de la Concorde, l'Arena Champs de Mars, le Stade nautique, l'Arena La Chapelle, le Grand Palais et les Invalides.
+
+## Question 8
+
+### Discipline qui aura lieu sur le plus grand nombre de sites :
+
+```{r}
+names(sort(table(unlist(strsplit(data_ex$sports, ","))), decreasing = TRUE))[1]
+```
+
+Le sport qui a lieu sur le plus de sites est l'athlétisme.
+
+### Sites qui accueillent cette discipline :
+
+```{r}
+subset(data_ex, grepl("Athlétisme", sports))
+```
+
+L'athlétisme aura lieu au stade de France, à l'hôtel de ville de Paris, le Pont d'Iéna et les invalides.
+
+## Question 9
+
+### Les deux sites les plus proches à vol d'oiseau :
+
+```{r}
+#Créer une colonne pour la latitude et la longitude
+data_ex$geo_point <- strsplit(as.character(data_ex$geo_point), ",", fixed = TRUE)
+data_ex$latitude <- as.numeric(sapply(data_ex$geo_point, function(x) x[1]))
+data_ex$longitude <- as.numeric(sapply(data_ex$geo_point, function(x) x[2]))
+
+#Créer une matrice pour pouvoir stocker les distance
+distances_matrix <- matrix(NA, nrow = nrow(data_ex), ncol = nrow(data_ex), dimnames = list(data_ex$nom, data_ex$nom))
+
+#Calcul des distance entre les sites
+for (i in 1:(nrow(data_ex)-1)) {
+  for (j in (i+1):nrow(data_ex)) {
+    distance <- distHaversine(
+      p1 = c(data_ex$latitude[i], data_ex$longitude[i]),
+      p2 = c(data_ex$latitude[j], data_ex$longitude[j])
+    )
+    distances_matrix[i, j] <- distance
+    distances_matrix[j, i] <- distance
+  }
+}
+
+# Trouver les deux sites les plus proches
+min_distance <- min(distances_matrix[distances_matrix > 0], na.rm = TRUE)
+sites_proches <- which(distances_matrix == min_distance, arr.ind = TRUE)
+
+# Afficher les résultats
+rownames(distances_matrix)[sites_proches[1, 1]]
+rownames(distances_matrix)[sites_proches[1, 2]]
+min_distance
+```
+
+Les deux sites les plus proches sont le Stade BMX de Saint-Quentin-en-Yvelines et le Vélodrome National de Saint-Quentin-en-Yvelines.
+
+## Question 10
+
+### Les deux sites les plus éloignés
+
+```{r}
+# Trouver les deux sites les plus éloignés
+max_distance <- max(distances_matrix[distances_matrix > 0], na.rm = TRUE)
+sites_eloignes <- which(distances_matrix == max_distance, arr.ind = TRUE)
+
+# Afficher les résultats
+rownames(distances_matrix)[sites_eloignes [1,1]]
+rownames(distances_matrix)[sites_eloignes [1,2]]
+max_distance
+```
+
+Les deux sites les plus éloignés sont la colline d'Elancourt et le stade nautique.
+
+## Question 11
+
+### Appartement situé au barycentre de l'ensemble des sites olympiques.
+
+```{r}
+barycentre_latitude <- weighted.mean(data_ex$latitude, w = rep(1, nrow(data_ex)))
+barycentre_longitude <- weighted.mean(data_ex$longitude, w = rep(1, nrow(data_ex)))
+
+coordonnees_tibble <- tibble::tibble(
+  lon = barycentre_longitude,
+  lat = barycentre_latitude
+)
+
+# Utiliser reverse_geocode pour obtenir le nom de l'adresse
+resultat <- tidygeocoder::reverse_geocode(coordonnees_tibble, lon = "lon", lat = "lat")
+
+# Afficher le résultat
+resultat$address
+```
+
+L'appartement au barycentre de l'ensemble des sites olympiques se situe au 23, Avenue Pierre 1er de Serbie, Quartier de Chaillot, Paris 16e Arrondissement, Paris, Île-de-France, France métropolitaine, 75116, France.
+

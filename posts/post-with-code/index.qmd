@@ -1,13 +1,45 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
+title: "Prévision météo"
+author: "Valorys Trillaud"
 date: "2024-03-05"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-This is a post with executable code.
+
+## Librairie getweather
+
+Ce package permet de savoir la température, la température ressentie, la précipitation et la probabilité de précipitation à partir d'une addresse ou d'un vecteur de coordonnées.
+
+Pour installer cette librairie il faut d'abord avoir installer le package remote et ensuite installer le package getweather.
+
+```{r, eval=FALSE}
+install.packages("remotes")
+remotes::install_github("Valorys/packageweather")
+```
+
+Prévision météo pour le stade de France :
 
 ```{r}
-1 + 1
+library(getweather)
+get_forecast("stade de France")
+```
+
+Prévision météo pour Tahiti :
+
+```{r}
+get_forecast("Tahiti")
+```
+
+Prévision météo pour les coordonnées gps 43.276703, 5.334791 :
+
+```{r}
+get_forecast(c(43.276703,
+5.334791 ))
+visu_temp(c(43.276703,
+5.334791 ))
+visu_temp_ressentie(c(43.276703,
+5.334791 ))
+visu_precipitation(c(43.276703,
+5.334791 ))
 ```

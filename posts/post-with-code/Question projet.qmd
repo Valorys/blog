@@ -1,0 +1,27 @@
+---
+title: "Question projet"
+author: "Valorys Trillaud"
+date: "2024-03-04"
+categories: [news, analysis]
+---
+
+# Projet : R avancé et introduction à Git
+
+# Projet de fin de classe
+
+## Création du projet de site sous
+
+### Question 1 : Créez un nouveau projet sous RStudio, que vous appelerez my_blog. Ce projet sera créé en utilisant le template quarto blog. Cochez les options renv et git pour les utiliser. Décrivez la structure du projet.
+
+Le projet est contenu dans le projet racine "mon_blog". Il contient en plus les fichier "\_quarto" et "renv". Il contient aussi le dossier docs où se trouve les codes des différents articles du blog.
+
+### Question 6 : Faites un commit de l'ensemble des fichiers, puis un push. Que voyez-vous désormais sous github ?
+
+En effectuant ces commandes nous pouvons voir sur github le réperoire principal du projet ainsi que tous les fichiers et dossiers.
+
+## Un package sous github
+
+### Question 9 : . Fermez le projet RStudio et redémarrez un nouveau terminal R. Depuis ce terminal, installez le packages remotes. Que se passe t'il quand vous exécutez la commande remotes::install_github("<votre username>/olympicsWeather") (remplacez <votre username> par votre username github) ?
+
+Cette commande permet de télécharger le package depuis mon github.
+

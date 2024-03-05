@@ -10,4 +10,6 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-# Bienvenu sur mon premier blog !
+# Bienvenue sur mon premier blog !
+
+Vous trouverez sur ces blog différents exercices fait lors de mon cours de R en master.

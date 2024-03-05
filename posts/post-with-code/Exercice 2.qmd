@@ -1,0 +1,168 @@
+---
+title: "Exercice 2"
+author: "Valorys Trillaud"
+date: "2024-03-04"
+categories: [news, analysis]
+---
+
+# Exercice semaine 2
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+library(rvest)
+library(purrr)
+library(dplyr)
+library(tidyverse)
+library(stringr)
+```
+
+## Question 1
+
+```{r}
+list_tables <-
+  session("https://fr.wikipedia.org/wiki/Liste_des_m%C3%A9daill%C3%A9s_olympiques") |>
+  html_elements(".wikitable") |>
+  html_table()
+```
+
+Cette commande créer une liste, list_tables qui contient 6 tables.
+
+## Question 2
+
+### Nettoyer la base de données
+
+```{r}
+# Créez un objet contenant le premier élément de list_tables
+data_medaillles_sport_ete <- list_tables[[1]]
+
+# Supprimez la première colonne et la première ligne
+data_medaillles_sport_ete <- data_medaillles_sport_ete[-1,-1]
+
+# Renommez les colonnes
+colnames(data_medaillles_sport_ete) <- c("Discipline", "Annees", "Editions",
+                                          "Epreuves_2020", "Or", "Argent", 
+                                         "Bronze", "Total", "Athletes_medailles",
+                                          "Athletes_or")
+
+# Convertir en colonnes d'entiers
+data_medaillles_sport_ete[c('Editions', 'Epreuves_2020', 'Or', 'Argent', 'Bronze', 'Total')] <- lapply(data_medaillles_sport_ete[c('Editions', 'Epreuves_2020', 'Or', 'Argent', 'Bronze', 'Total')], as.integer)
+```
+
+## Question 3
+
+### Les 3 disciplines avec le plus de médailles distribuées depuis le début de l'histoire des jeux olympiques.
+
+```{r}
+data_medaillles_sport_ete |> 
+  arrange(desc(Total)) |> 
+  head(3)
+```
+
+Les trois disciplines avec le plus de médailles distribuées sont l'athlétisme, la nation et la lutte.
+
+## Question 4
+
+### Les disciplines avec le moins d'épreuves en 2020
+
+```{r}
+data_medaillles_sport_ete |> 
+  arrange(Epreuves_2020)
+```
+
+Les sports avec le moins d'épreuves en 2020 et qui avaient que 2 épreuves sont le Football, le Golf, le Handball, le Hockey sur gazon, la Natation synchronisée, le Pentathlon moderne, le Volley-ball et le Water polo.
+
+## Question 5, 6 et 7
+
+### Les questions 5, 6 et 7 seront traité en même temps le but est d'avoir une fonction dénérique qui nous renseigne sur le nombre total d'apparence des disciplines aux JO d'été.
+
+```{r}
+extract_numbers <- function(str) {
+  as.integer(str_extract_all(str, "\\d+")[[1]])
+}
+
+
+# Fonction de calcul du nombre de JO d'été
+calcul_nb_editions <- function(date) {
+  r <- strsplit(as.character(date), ",")[[1]]
+  summer_olympics_years <- integer(0)
+
+  for (part in r) {
+    if (grepl("depuis", part)) {
+      debut <- extract_numbers(part)
+      summer_olympics_years <- c(summer_olympics_years, seq(debut, 2020, by = 4))
+    } else if (grepl("-", part)) {
+      date_debut <- as.integer(strsplit(part, "-")[[1]])
+      summer_olympics_years <- c(summer_olympics_years, seq(date_debut[1], date_debut[2], by = 4))
+    } else if (is.numeric(part)) {
+      summer_olympics_years <- c(summer_olympics_years, part)
+    } else {
+      debut <- extract_numbers(part)
+      summer_olympics_years <- c(summer_olympics_years, debut)
+    }
+  }
+
+  # Exclure les années sans JO
+  summer_olympics_years <- setdiff(summer_olympics_years, c(1916, 1940, 1944))
+  nb_editions <- length(unique(summer_olympics_years))
+  return(nb_editions)
+}
+
+# Exemples d'utilisation de la fonction
+calcul_nb_editions(2000)
+calcul_nb_editions("2000")
+calcul_nb_editions("2000-2012") 
+calcul_nb_editions("depuis 2000")
+
+```
+
+```{r}
+calcul_nb_editions("1896, 1904, depuis 1920")
+```
+
+L'appel calcul_nb_editions("1896, 1904, depuis 1920") rend bien 26.
+
+```{r}
+calcul_nb_editions(2000)
+```
+
+L'appel calcul_nb_editions(2000) rend 1.
+
+```{r}
+calcul_nb_editions("1904–1924, depuis 1948")
+```
+
+L'appel calcul_nb_editions("1904--1924, depuis 1948") rend 21.
+
+## Question 8
+
+### Implémentez une fonction calcul_medailles_individuelles qui détermine le nombre de médaille maximal a été obtenu par un athlète lors d'olympiades.
+
+```{r}
+calcul_medailles_individuelles <- function(data_medaillles_sport_ete){
+  medailles <- "\\(\\d+-\\d+-\\d+\\)"
+  data_medaillles_sport_ete$Athletes_medailles <- regmatches(data_medaillles_sport_ete$Athletes_medailles, gregexpr(medailles, data_medaillles_sport_ete$Athletes_medailles))
+  data_medaillles_sport_ete$Athletes_medailles <- sapply(data_medaillles_sport_ete$Athletes_medailles, function(x) ifelse(length(x) > 0, x[1], NA))
+  medaille_max <- max(sapply(strsplit(gsub("\\(|\\)", "", data_medaillles_sport_ete$Athletes_medailles), "-"), function(x) sum(as.numeric(x))))
+  return(medaille_max)
+}
+
+calcul_medailles_individuelles(data_medaillles_sport_ete)
+```
+
+Le nombre de médaille maximal obtenu par un athlète lors d'olympiades est de 28.
+
+## Question 10
+
+```{r}
+extraire_nationalite_athlete <- function(chaine){
+  nationalites_match <- gregexpr("\\(([A-Z]+)\\)", chaine)
+  nationalites <- regmatches(chaine, nationalites_match)[[1]]
+  nationalites <- setNames(rep(1, length(nationalites)), nationalites)
+  return(nationalites)
+}
+
+extraire_nationalite_athlete("Paavo Nurmi (FIN) (9-3-0) Carl Lewis (USA) (9-1-0)")
+
+```
+
